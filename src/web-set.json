@@ -43,6 +43,9 @@
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
+          }
+        },
+        {
           "name": "Komik Search",
           "desc": "Temukan Dari Komik",
           "path": "/search/komiks?query=",
