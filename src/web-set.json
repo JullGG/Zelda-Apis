@@ -1,0 +1,236 @@
+{
+  "name": "Zelda's Apis",
+  "version": "v1.0",
+  "description": "Rest Api Simple",
+  "bannerImage": "https://files.catbox.moe/0a58nf.jpg",
+  "header": {
+    "status": "Online!"
+  },
+  "apiSettings": {
+    "creator": "Jul - RenvyTeam",
+    "globalKey": ["yo"],
+    "defaultRequireKey": true
+  },
+  "categories": [
+     {
+      "name": "Search",
+      "items": [
+        {
+          "name": "Film Finder AI",
+          "desc": "Temukan film berdasarkan kriteria tertentu",
+          "path": "/search/filmfinder?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Jenis film yang dicari (contoh: film horror tahun 90an)"
+          }
+        },
+        {
+          "name": "Douyin Search",
+          "desc": "Temukan Douyinmu Berdasarkan Kriteria",
+          "path": "/search/douyinsearch?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Masukkan Query yang ingin dicari"
+          }
+        },
+        {
+          "name": "Youtube Search",
+          "desc": "Temukan Dari Youtube",
+          "path": "/search/ytsearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
+          "name": "Komik Search",
+          "desc": "Temukan Dari Komik",
+          "path": "/search/komiks?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
+          }
+        }        
+      ]
+    },
+    {
+      "name": "Downloader",
+      "items": [
+        {
+          "name": "Twitter",
+          "desc": "Download Twitter",
+          "path": "/downloader/twitterdl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari Twitter/X"
+          }
+        },
+        {
+          "name": "Instagram",
+          "desc": "download media dari instagram",
+          "path": "/downloader/dlig?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari instagram"
+          }
+        },
+        {
+          "name": "Downloader Profile Instagram",
+          "desc": "Download Profile IG Via Username",
+          "path": "/downloader/igdl-pp?username=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "username": "Username akun dari ig"
+          }
+        },
+        {
+          "name": "Tiktok Downloader",
+          "desc": "Download Tiktok",
+          "path": "/downloader/tiktokdl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari tiktok"
+          }
+        },
+        {
+          "name": "Youtube Video Downloader",
+          "desc": "Download Video Youtube",
+          "path": "/downloader/ytv?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari youtube"
+          }
+        },
+        {
+          "name": "Youtube Audio Downloader",
+          "desc": "Download Audio Youtube",
+          "path": "/downloader/yta?url=",
+          "status": "maintenance",
+          "requireKey": false,
+          "params": {
+            "url": "url dari youtube"
+          }
+        }                
+      ]
+    },
+    {
+      "name": "Stalker",
+      "items": [
+        {
+          "name": "Free Fire Stalk",
+          "desc": "Simple Free Fire Stalk",
+          "path": "/stalker/ffstalk?id=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "id": "masukkan id free fire"
+          }
+        },
+        {
+          "name": "Instagram Stalk",
+          "desc": "Stalker Instagram Via Username",
+          "path": "/stalker/igstalk?username=",
+          "status": "error",
+          "requireKey": false,
+          "params": {
+            "username": "Username tanpa @"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Tools",
+      "items": [
+        {
+          "name": "Ai Puisi",
+          "desc": "Generate puisi pendekmu",
+          "path": "/ai/ai-puisi?text=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "text": "Teks puisi mu."
+          }
+        },        
+        {
+          "name": "LuminAI",
+          "desc": "Chat dengan LuminAI",
+          "path": "/ai/ai-lumin?text=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "text": "Pesan untuk LuminAI"
+          }
+        },
+        {
+          "name": "Arting Ai",
+          "desc": "Buat gambar mu dari arting",
+          "path": "/ai/ai-arting?prompt=",
+          "status": "offline",
+          "requireKey": false,
+          "params": {
+            "prompt": "Prompt untuk Buat gambar."
+          }
+        },
+        {
+          "name": "GPT Ai",
+          "desc": "Tanyakan Sesuatu Kepada Gpt Ai",
+          "path": "/ai/ai-gpt?teks=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "teks": "Pesan untuk Gpt Ai"
+          }
+        }       
+      ]
+    },
+    {
+      "name": "Random",
+      "items": [
+        {
+          "name": "Random Waifu",
+          "desc": "Get Random Waifumu",
+          "path": "/random/randomwaifu",
+          "status": "ready",
+          "requireKey": true
+        }
+      ]
+    },
+    {
+      "name": "Uploader",
+      "items": [
+        {
+          "name": "Upload teks to catbox",
+          "desc": "TYPE : ['js', 'ts', 'py', 'cpp', 'c', 'java', 'html', 'css', 'json', 'xml', 'php', 'rb', 'go', 'rs', 'sh', 'bat', 'kt']",
+          "path": "/uploader/uptekstocatbox?teks=&type=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "teks": "masukkan teksmu",
+            "type": "type file mu"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "items": [
+        {
+          "name": "Beuty Javascript Code",
+          "desc": "Rapikan dan bersihkan codemu",
+          "path": "/tools/beautyjs?code=",
+          "status": "maintenance",
+          "requireKey": false,
+          "params": {
+            "code": "masukkan codemu"
+          }
+        }
+      ]
+    }
+  ]
+}
