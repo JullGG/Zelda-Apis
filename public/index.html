@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Zelda Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
+    <meta name="keywords" content="API, Rest API, Zelda, Developer Tools, Free API">
+    <meta name="author" content="Renvy Team">
+
+   <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:url" content="https://zafira-s-developer.vercel.app">
+   <meta property="og:type" content="website">
+  
+    <meta property="og:title" content="Zelda Apis">
+    <meta property="og:description" content="Koleksi API gratis">
+    <meta property="og:type" content="website">
+    <title>Zelda Apis | API Gratis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF3D3D;
+            --primary-dark: #C62828;
+            --primary-light: #FF6B6B;
+            --secondary: #333333;
+            --text: #222222;
+            --text-secondary: #555555;
+            --bg: #FFFFFF;
+            --card-bg: #F8F8F8;
+            --border-color: #000000;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --highlight: #FFEB3B;
+            --banner-bg: #FF5722;
+            --comic-border: 3px solid var(--border-color);
+            --comic-shadow: 5px 5px 0 var(--shadow-color);
+        }
+
+        [data-theme="dark"] {
+            --primary: #FF5252;
+            --primary-dark: #FF1744;
+            --primary-light: #FF8A80;
+            --secondary: #212121;
+            --text: #E0E0E0;
+            --text-secondary: #9E9E9E;
+            --bg: #121212;
+            --card-bg: #1E1E1E;
+            --border-color: #424242;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --highlight: #FFC107;
+            --banner-bg: #E64A19;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Marker Felt', 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 1px 1px, var(--border-color) 1px, transparent 0);
+            background-size: 20px 20px;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .comic-banner {
+            position: relative;
+            margin: 0 auto 30px;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            overflow: hidden;
+            max-width: 100%;
+            height: auto;
+            background-color: var(--banner-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .comic-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(0,0,0,0.05),
+                rgba(0,0,0,0.05) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            z-index: 1;
+        }
+
+        .comic-banner img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid black;
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .comic-banner img:hover {
+            transform: rotate(-2deg) scale(1.02);
+        }
+
+        .comic-banner .banner-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px;
+            font-size: 0.8rem;
+            z-index: 3;
+        }
+
+        .comic-banner .speech-bubble {
+            position: absolute;
+            background-color: white;
+            border: var(--comic-border);
+            border-radius: 50%;
+            padding: 15px;
+            max-width: 200px;
+            box-shadow: var(--comic-shadow);
+            z-index: 4;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .comic-banner .speech-bubble::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-top-color: white;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            background-color: var(--banner-bg);
+            color: white;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            position: relative;
+            border-radius: 0;
+            clip-path: polygon(
+                0% 0%, 100% 0%, 100% 75%,
+                75% 75%, 75% 100%, 50% 75%,
+                0% 75%
+            );
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50px;
+            border-width: 20px 20px 0;
+            border-style: solid;
+            border-color: var(--banner-bg) transparent;
+            display: block;
+            width: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 3px 3px 0 var(--shadow-color);
+            letter-spacing: 1px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            border: var(--comic-border);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--shadow-color);
+        }
+
+        .search-container {
+            margin: 20px auto;
+            max-width: 600px;
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            font-size: 1.1rem;
+            background-color: var(--card-bg);
+            color: var(--text);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #4CAF50;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border: 2px solid black;
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            font-weight: bold;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            background-color: var(--highlight);
+            padding: 15px;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            position: relative;
+        }
+
+        .category {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 4px solid var(--primary);
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0 var(--shadow-color);
+        }
+
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .api-card {
+            background-color: var(--card-bg);
+            border-radius: 0;
+            padding: 20px;
+            transition: transform 0.3s;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .api-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 8px 8px 0 var(--shadow-color);
+        }
+
+        .api-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-weight: bold;
+        }
+
+        .api-desc {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .api-path-container {
+            position: relative;
+            margin-bottom: 15px;
+            background-color: white;
+            border: var(--comic-border);
+            padding: 5px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--card-bg);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .api-path-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .api-path-container::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+
+        .api-path-container::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        .api-path {
+            background-color: var(--card-bg);
+            padding: 8px 35px 8px 12px;
+            border-radius: 0;
+            font-family: 'Courier New', Courier, monospace;
+            display: inline-block;
+            white-space: nowrap;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .copy-path-btn {
+            position: sticky;
+            right: 5px;
+            top: 5px;
+            float: right;
+            background: var(--primary);
+            border: 2px solid black;
+            color: white;
+            cursor: pointer;
+            padding: 3px 8px;
+            font-weight: bold;
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            margin-left: 10px;
+            z-index: 1;
+        }
+
+        .api-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            border: 2px solid black;
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            font-weight: bold;
+        }
+
+        .status-ready {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .status-update {
+            background-color: #FFC107;
+            color: black;
+        }
+
+        .status-offline {
+            background-color: #F44336;
+            color: white;
+        }
+
+        .status-error {
+            background-color: #F44336;
+            color: white;
+        }
+
+        .status-maintenance {
+            background-color: #FF9800;
+            color: black;
+        }
+
+        .api-key-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid black;
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            font-weight: bold;
+        }
+
+        .api-key-badge.public {
+            background-color: #4CAF50;
+        }
+
+        .param-title {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            font-weight: bold;
+        }
+
+        .param-list {
+            margin-bottom: 15px;
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .param-item {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .param-name {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .try-btn {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            text-transform: uppercase;
+        }
+
+        .try-btn:hover:not(.disabled) {
+            background-color: var(--primary-dark);
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0 var(--shadow-color);
+        }
+
+        .try-btn.disabled {
+            background-color: #9E9E9E;
+            cursor: not-allowed;
+            opacity: 0.7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .try-btn.disabled::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0,0,0,0.1) 10px,
+                rgba(0,0,0,0.1) 20px
+            );
+        }
+
+        .try-container {
+            margin-top: 20px;
+            display: none;
+            border: var(--comic-border);
+            padding: 15px;
+            background-color: var(--card-bg);
+            box-shadow: inset 3px 3px 0 var(--shadow-color);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            background-color: var(--card-bg);
+            border: var(--comic-border);
+            color: var(--text);
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            box-sizing: border-box;
+        }
+
+        .execute-btn {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            border-radius: 0;
+            cursor: pointer;
+            margin-right: 10px;
+            font-weight: bold;
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .execute-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--shadow-color);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            max-width: 90%;
+            width: 800px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .close-popup {
+            background: var(--primary);
+            color: white;
+            border: 2px solid black;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            transition: all 0.3s;
+        }
+
+        .close-popup:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 var(--shadow-color);
+        }
+
+        .popup-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid var(--border-color);
+            background-color: var(--bg);
+        }
+
+        .result-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .popup-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .copy-btn {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid black;
+            padding: 5px 10px;
+            border-radius: 0;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            transition: all 0.3s;
+        }
+
+        .copy-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 var(--shadow-color);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        .error-message {
+            color: white;
+            padding: 10px;
+            background-color: var(--primary-dark);
+            border-radius: 0;
+            margin-top: 10px;
+            border: var(--comic-border);
+            box-shadow: 2px 2px 0 var(--shadow-color);
+        }
+
+        .status-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border: var(--comic-border);
+            box-shadow: var(--comic-shadow);
+            z-index: 1001;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            max-width: 90%;
+            animation: bounceIn 0.5s;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
+            70% { transform: translateX(-50%) scale(1.1); }
+            100% { transform: translateX(-50%) scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 4px solid var(--primary);
+            color: var(--text-secondary);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .api-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            header {
+                clip-path: polygon(
+                    0% 0%, 100% 0%, 100% 90%,
+                    75% 90%, 75% 100%, 50% 90%,
+                    0% 90%
+                );
+                padding-bottom: 40px;
+            }
+
+            .theme-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                display: block;
+                margin: 10px auto;
+            }
+
+            .comic-banner .speech-bubble {
+                max-width: 150px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .execute-btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .api-path {
+                padding-right: 30px;
+            }
+            
+            .popup-content {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .comic-banner .speech-bubble {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="comic-banner-container" class="comic-banner">
+            <!-- Banner akan diisi oleh JavaScript -->
+        </div>
+        
+        <header>
+            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+            <h1 id="api-name">Zelda Apis</h1>
+            <div class="status" id="api-status">Online</div>
+            <p class="description" id="api-description">Simple Rest Api.</p>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Cari API berdasarkan nama atau deskripsi...">
+        </div>
+        
+        <div id="categories-container"></div>
+        
+        <footer>
+            <p>Dibuat dengan ❤ oleh <span id="api-creator">Zelda Apis</span></p>
+            <p>Versi <span id="api-version">v1.0</span></p>
+        </footer>
+    </div>
+
+    <div class="popup" id="apiPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title" id="popupTitle">Hasil API</h2>
+                <button class="close-popup" id="closePopup">X</button>
+            </div>
+            <div class="popup-body" id="popupBody"></div>
+            <div class="popup-footer">
+                <button class="copy-btn" id="copyResultBtn">
+                    <i class="fas fa-copy"></i> Salin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-notification" id="statusNotification"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            themeToggle.textContent = currentTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+            
+            themeToggle.addEventListener('click', function() {
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggle.textContent = newTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+                
+                this.blur();
+            });
+
+            const apiPopup = document.getElementById('apiPopup');
+            const closePopup = document.getElementById('closePopup');
+            const popupBody = document.getElementById('popupBody');
+            const popupTitle = document.getElementById('popupTitle');
+            const copyResultBtn = document.getElementById('copyResultBtn');
+            const statusNotification = document.getElementById('statusNotification');
+            const comicBannerContainer = document.getElementById('comic-banner-container');
+            
+            closePopup.addEventListener('click', function() {
+                apiPopup.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === apiPopup) {
+                    apiPopup.style.display = 'none';
+                }
+            });
+            
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+            
+            loadApiData();
+            
+            function createComicBanner(bannerImage) {
+                if (!bannerImage) return;
+                
+                const bannerHTML = `
+                    <img src="${bannerImage}" alt="Banner Zelda Apis" loading="lazy">
+                    <div class="banner-caption">Selamat Menggunakan -/o/-</div>
+                    <div class="speech-bubble" style="top: 20px; right: 20px;">
+                        Coba API gratis sekarang!
+                    </div>
+                    <div class="speech-bubble" style="bottom: 40px; left: 20px; animation-delay: 0.5s;">
+                        Keren banget!
+                    </div>
+                `;
+                
+                comicBannerContainer.innerHTML = bannerHTML;
+            }
+            
+            function showStatusNotification(message) {
+                statusNotification.textContent = message;
+                statusNotification.style.display = 'block';
+                
+                setTimeout(function() {
+                    statusNotification.style.display = 'none';
+                }, 3000);
+            }
+            
+            function handleSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const apiCards = document.querySelectorAll('.api-card');
+                
+                if (!searchTerm) {
+                    apiCards.forEach(card => {
+                        card.style.display = 'block';
+                        const category = card.closest('.category');
+                        if (category) {
+                            category.style.display = 'block';
+                        }
+                    });
+                    return;
+                }
+                
+                apiCards.forEach(card => {
+                    const name = card.dataset.apiName;
+                    const desc = card.dataset.apiDesc;
+                    const matches = name.includes(searchTerm) || desc.includes(searchTerm);
+                    card.style.display = matches ? 'block' : 'none';
+                    
+                    const category = card.closest('.category');
+                    if (category) {
+                        const hasVisibleCards = Array.from(category.querySelectorAll('.api-card'))
+                            .some(c => c.style.display !== 'none');
+                        category.style.display = hasVisibleCards ? 'block' : 'none';
+                    }
+                });
+            }
+            
+            function debounce(func, wait) {
+                let timeout;
+                return function() {
+                    const context = this, args = arguments;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function() {
+                        func.apply(context, args);
+                    }, wait);
+                };
+            }
+            
+            function checkVisibility() {
+                const categories = document.querySelectorAll('.category');
+                categories.forEach(category => {
+                    const rect = category.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        category.classList.add('visible');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+            
+            async function loadApiData() {
+                try {
+                    const response = await fetch('/src/web-set.json');
+                    if (!response.ok) {
+                        throw new Error('Gagal memuat data: ' + response.status);
+                    }
+                    const data = await response.json();
+                    
+                    document.getElementById('api-name').textContent = data.name;
+                    document.getElementById('api-status').textContent = data.header.status;
+                    document.getElementById('api-description').textContent = data.description;
+                    document.getElementById('api-creator').textContent = data.apiSettings.creator;
+                    document.getElementById('api-version').textContent = data.version;
+                    
+                    if (data.bannerImage) {
+                        createComicBanner(data.bannerImage);
+                    }
+                    
+                    const categoriesContainer = document.getElementById('categories-container');
+                    categoriesContainer.innerHTML = '';
+                    
+                    data.categories.forEach(category => {
+                        const categoryElement = document.createElement('div');
+                        categoryElement.className = 'category';
+                        categoryElement.dataset.category = category.name.toLowerCase();
+                        
+                        const categoryTitle = document.createElement('h2');
+                        categoryTitle.className = 'category-title';
+                        categoryTitle.textContent = category.name;
+                        
+                        const apiGrid = document.createElement('div');
+                        apiGrid.className = 'api-grid';
+                        
+                        category.items.forEach(item => {
+                            const apiCard = document.createElement('div');
+                            apiCard.className = 'api-card';
+                            apiCard.dataset.apiName = item.name.toLowerCase();
+                            apiCard.dataset.apiDesc = item.desc.toLowerCase();
+                            
+                            const apiName = document.createElement('h3');
+                            apiName.className = 'api-name';
+                            apiName.textContent = item.name;
+                            
+                            const apiKeyBadge = document.createElement('span');
+                            apiKeyBadge.className = `api-key-badge ${item.requireKey ? '' : 'public'}`;
+                            apiKeyBadge.textContent = item.requireKey ? 'Butuh Key' : 'Publik';
+                            apiName.appendChild(apiKeyBadge);
+                            
+                            const apiDesc = document.createElement('p');
+                            apiDesc.className = 'api-desc';
+                            apiDesc.textContent = item.desc;
+                            
+                            const apiPathContainer = document.createElement('div');
+                            apiPathContainer.className = 'api-path-container';
+                            
+                            const apiPath = document.createElement('code');
+                            apiPath.className = 'api-path';
+                            apiPath.textContent = item.path;
+                            
+                            const copyPathBtn = document.createElement('button');
+                            copyPathBtn.className = 'copy-path-btn';
+                            copyPathBtn.title = 'Salin endpoint';
+                            copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                            copyPathBtn.addEventListener('click', function() {
+                                navigator.clipboard.writeText(item.path).then(function() {
+                                    copyPathBtn.innerHTML = '<i class="fas fa-check"></i>';
+                                    setTimeout(function() {
+                                        copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                                    }, 2000);
+                                });
+                            });
+                            
+                            apiPathContainer.appendChild(apiPath);
+                            apiPathContainer.appendChild(copyPathBtn);
+                            
+                            const apiStatus = document.createElement('span');
+                            apiStatus.className = `api-status status-${item.status.toLowerCase()}`;
+                            
+                            const statusIcon = document.createElement('i');
+                            let statusText = item.status;
+                            
+                            switch(item.status.toLowerCase()) {
+                                case 'ready':
+                                    statusIcon.className = 'fas fa-circle-check';
+                                    statusText = 'Online';
+                                    break;
+                                case 'update':
+                                    statusIcon.className = 'fas fa-circle-notch fa-spin';
+                                    statusText = 'Update';
+                                    break;
+                                case 'offline':
+                                    statusIcon.className = 'fas fa-circle-xmark';
+                                    statusText = 'Offline';
+                                    break;
+                                case 'maintenance':
+                                    statusIcon.className = 'fas fa-tools';
+                                    statusText = 'Maintenance';
+                                    break;
+                                case 'error':
+                                    statusIcon.className = 'fas fa-circle-exclamation';
+                                    statusText = 'Error';
+                                    break;
+                                default:
+                                    statusIcon.className = 'fas fa-circle';
+                            }
+                            
+                            apiStatus.appendChild(statusIcon);
+                            apiStatus.appendChild(document.createTextNode(statusText));
+                            
+                            apiCard.append(apiName, apiDesc, apiPathContainer, apiStatus);
+                            
+                            if (item.params) {
+                                const paramTitle = document.createElement('p');
+                                paramTitle.className = 'param-title';
+                                paramTitle.textContent = 'Parameter:';
+                                
+                                const paramList = document.createElement('div');
+                                paramList.className = 'param-list';
+                                
+                                Object.entries(item.params).forEach(([key, desc]) => {
+                                    const paramItem = document.createElement('div');
+                                    paramItem.className = 'param-item';
+                                    paramItem.innerHTML = `<span class="param-name">${key}</span>: ${desc}`;
+                                    paramList.appendChild(paramItem);
+                                });
+                                
+                                apiCard.append(paramTitle, paramList);
+                            }
+                            
+                            const tryBtn = document.createElement('button');
+                            tryBtn.className = 'try-btn';
+                            tryBtn.textContent = 'Coba Sekarang';
+                            
+                            if (item.status.toLowerCase() !== 'ready') {
+                                tryBtn.classList.add('disabled');
+                                tryBtn.addEventListener('click', function() {
+                                    showStatusNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`);
+                                });
+                            } else {
+                                tryBtn.addEventListener('click', function() {
+                                    toggleTryContainer(apiCard, item);
+                                });
+                            }
+                            
+                            apiCard.appendChild(tryBtn);
+                            apiGrid.appendChild(apiCard);
+                        });
+                        
+                        categoryElement.append(categoryTitle, apiGrid);
+                        categoriesContainer.appendChild(categoryElement);
+                    });
+                    
+                    checkVisibility();
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    const errorElement = document.createElement('div');
+                    errorElement.className = 'api-card';
+                    errorElement.style.backgroundColor = '#c62828';
+                    errorElement.style.color = 'white';
+                    errorElement.style.padding = '20px';
+                    errorElement.textContent = `Error memuat data API: ${error.message}`;
+                    document.getElementById('categories-container').appendChild(errorElement);
+                }
+            }
+            
+            function toggleTryContainer(apiCard, item) {
+                let tryContainer = apiCard.querySelector('.try-container');
+                
+                if (!tryContainer) {
+                    tryContainer = createTryContainer(apiCard, item);
+                }
+                
+                tryContainer.style.display = tryContainer.style.display === 'none' ? 'block' : 'none';
+            }
+            
+            function createTryContainer(apiCard, item) {
+                const tryContainer = document.createElement('div');
+                tryContainer.className = 'try-container';
+                
+                if (item.requireKey) {
+                    const keyGroup = document.createElement('div');
+                    keyGroup.className = 'input-group';
+                    
+                    const keyLabel = document.createElement('label');
+                    keyLabel.textContent = 'API Key';
+                    keyLabel.innerHTML += ' <span style="color: var(--primary-light)">*wajib</span>';
+                    
+                    const keyInput = document.createElement('input');
+                    keyInput.type = 'text';
+                    keyInput.placeholder = 'Masukkan API key Anda';
+                    keyInput.id = `api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                    keyInput.required = true;
+                    
+                    keyGroup.append(keyLabel, keyInput);
+                    tryContainer.appendChild(keyGroup);
+                }
+                
+                if (item.params) {
+                    Object.keys(item.params).forEach(param => {
+                        const inputGroup = document.createElement('div');
+                        inputGroup.className = 'input-group';
+                        
+                        const label = document.createElement('label');
+                        label.textContent = param;
+                        
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.placeholder = item.params[param];
+                        input.id = `param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                        
+                        inputGroup.append(label, input);
+                        tryContainer.appendChild(inputGroup);
+                    });
+                }
+                
+                const buttonGroup = document.createElement('div');
+                buttonGroup.style.marginTop = '10px';
+                
+                const executeBtn = document.createElement('button');
+                executeBtn.className = 'execute-btn';
+                executeBtn.textContent = 'Jalankan';
+                executeBtn.addEventListener('click', function() {
+                    executeApi(item);
+                });
+                
+                buttonGroup.appendChild(executeBtn);
+                tryContainer.appendChild(buttonGroup);
+                
+                apiCard.appendChild(tryContainer);
+                return tryContainer;
+            }
+            
+            async function executeApi(item) {
+                popupTitle.textContent = `Hasil ${item.name}`;
+                popupBody.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div class="loading"></div>
+                        <p>Memproses request ke ${item.name}...</p>
+                    </div>
+                `;
+                apiPopup.style.display = 'flex';
+                
+                try {
+                    let url = item.path.split('?')[0];
+                    const params = new URLSearchParams();
+                    
+                    if (item.requireKey) {
+                        const apiKey = document.getElementById(`api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`).value.trim();
+                        if (!apiKey) {
+                            throw new Error('API key diperlukan');
+                        }
+                        params.append('apikey', apiKey);
+                    }
+                    
+                    if (item.params) {
+                        Object.keys(item.params).forEach(param => {
+                            const input = document.getElementById(`param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`);
+                            if (input && input.value.trim()) {
+                                params.append(param, input.value.trim());
+                            }
+                        });
+                    }
+                    
+                    if (params.toString()) {
+                        url += '?' + params.toString();
+                    }
+                    
+                    const response = await fetch(url);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Request gagal dengan status ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    popupBody.innerHTML = '';
+                    const pre = document.createElement('pre');
+                    pre.className = 'result-content';
+                    pre.textContent = JSON.stringify(data, null, 2);
+                    popupBody.appendChild(pre);
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    popupBody.innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Error:</strong> ${error.message}</p>
+                            <p>Coba lagi atau periksa parameter Anda</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            copyResultBtn.addEventListener('click', function() {
+                const pre = popupBody.querySelector('pre');
+                if (pre) {
+                    navigator.clipboard.writeText(pre.textContent).then(function() {
+                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                        setTimeout(function() {
+                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i> Salin';
+                        }, 2000);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
