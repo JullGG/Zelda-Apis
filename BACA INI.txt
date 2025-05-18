@@ -1,0 +1,28 @@
+[ BACA DULU SEBELUM PAKAI SCRIPT ]
+
+Dengan menggunakan atau membuka script ini, berarti kamu sudah setuju dengan aturan berikut. Jadi harap dibaca baik-baik.
+
+
+Aturan Penggunaan Script:
+
+Jangan sebar atau bagi script ini secara gratis. Ini hasil kerja keras, tolong hargai. Kalau dibocorin, kamu sendiri yang rugi.
+
+Error karena utak-atik sendiri? Tanggung jawab masing-masing. Script ini dijual dengan asumsi kamu sudah paham dasar web & REST API.
+
+Jangan tanya hal-hal di luar konteks seperti "cara scraping gimana?" atau "bisa tambahin fitur ini gak?". Script ini bukan layanan custom, ya.
+
+Admin/Owner TIDAK melayani:
+
+Permintaan tambahan fitur (termasuk scraping atau endpoint baru).
+
+Perbaikan error akibat editan sendiri.
+
+Permintaan ubah tampilan atau alur kerja script.
+
+Tutorial full pemakaian dari nol.
+
+
+Kesimpulan:
+Script ini cocok buat yang butuh solusi cepat dan sudah punya basic. Kalau kamu masih benar-benar awam, disarankan belajar dasar dulu biar lebih enak pakenya.
+
+Terima kasih sudah support. Semoga script ini bermanfaat!
